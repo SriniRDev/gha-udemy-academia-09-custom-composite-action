@@ -11,6 +11,8 @@ jobs:
         uses: actions/checkout@v3
       - name: Load and Cache dependencies
         uses: ./.github/actions/cached-deps # path relative from project root. "action.yml" will be identified automatically
+        with:
+          caching: 'false' # passing input to custom composite action
       - name: Lint code
         run: npm run lint
   test:
