@@ -15,7 +15,7 @@ jobs:
         with:
           caching: 'false' # passing input to custom composite action
       - name: Output Information
-        run: echo "cache used? ${{ steps.cache-deps.outputs.used-cache }}"
+        run: echo "cache used? ${{ steps.cache-deps.used-cache }}"
       - name: Lint code
         run: npm run lint
   test:
