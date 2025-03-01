@@ -10,7 +10,7 @@ jobs:
       - name: Get code
         uses: actions/checkout@v3
       - name: Load and Cache dependencies
-        uses: ./github/actions/cached-deps # path relative from project root. action.yml will be identified automatically
+        uses: ./.github/actions/cached-deps # path relative from project root. "action.yml" will be identified automatically
       - name: Lint code
         run: npm run lint
   test:
