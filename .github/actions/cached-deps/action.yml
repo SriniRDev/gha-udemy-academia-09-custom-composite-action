@@ -6,6 +6,10 @@ inputs:
     required: false
     default: 'true'
     type: string
+outputs:
+  used-cache:
+    description: 'Whether cache was used.'
+    value: ${{ steps.install.outputs.cache }}    
 runs:
   using: 'composite' # composite is a keyword
   steps:
@@ -17,6 +21,9 @@ runs:
         path: node_modules
         key: deps-node-modules-${{ hashFiles('**/package-lock.json') }}
     - name: Install dependencies
+      id: install
       if: steps.cache.outputs.cache-hit != 'true' || inputs.caching != 'true'
-      run: npm ci 
+      run: |
+        npm ci 
+        echo "cache=${{ inputs.caching }}" >> GITHUB_OUTPUT
       shell: bash # shell is used for run steps to denote which shell to use to run the command
