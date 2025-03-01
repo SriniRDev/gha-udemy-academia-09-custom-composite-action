@@ -1,0 +1,5 @@
+name: 'Deploy to AWS s3'
+description: 'Deploy a static website via AWS S3'
+runs:
+  using: 'node16' # gha understands this is a JS custom action because node16 used JS runtime
+  main: 'main.js' # relative path of main code. can  be any name for the file.
